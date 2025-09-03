@@ -1,0 +1,48 @@
+{
+  "name": "@fzed51/react-hooks",
+  "version": "0.0.1",
+  "description": "Bibliothèque de hooks React personnalisés.",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fzed51/react-hooks.git"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.33.0",
+    "@golevelup/ts-jest": "^0.7.0",
+    "@ngneat/falso": "^8.0.2",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.17.1",
+    "eslint": "^9.33.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jest": "^29.0.1",
+    "eslint-plugin-prettier": "^5.5.4",
+    "globals": "^16.3.0",
+    "jest": "30.0.5",
+    "jest-junit": "^16.0.0",
+    "prettier": "^3.6.2",
+    "ts-jest": "^29.4.1",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.39.0"
+  },
+  "scripts": {
+    "publish": "",
+    "build": "yarn build:cjs && yarn build:esm",
+    "build:cjs": "tsc --project ./tsconfig.cjs.json",
+    "build:esm": "tsc --project ./tsconfig.esm.json",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
+    "test": "jest",
+    "test:full": "jest --verbose --coverage",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "axios": "^1.11.0"
+  }
+}
