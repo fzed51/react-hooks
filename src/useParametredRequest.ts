@@ -4,6 +4,7 @@ export interface UseParametredRequestState<T> {
   data: T | null;
   loading: boolean;
   error: Error | null;
+  firstLoading: boolean;
 }
 
 export interface UseParametredRequestReturn<T, P extends unknown[]>
@@ -22,6 +23,7 @@ export function useParametredRequest<T, P extends unknown[]>(
     data: null,
     loading: false,
     error: null,
+    firstLoading: false,
   });
 
   const send = useCallback(
@@ -30,6 +32,7 @@ export function useParametredRequest<T, P extends unknown[]>(
         ...prev,
         loading: true,
         error: null,
+        firstLoading: prev.data === null && !prev.loading,
       }));
 
       try {
@@ -38,12 +41,14 @@ export function useParametredRequest<T, P extends unknown[]>(
           data: result,
           loading: false,
           error: null,
+          firstLoading: false,
         });
       } catch (error) {
         setState({
           data: null,
           loading: false,
           error: error instanceof Error ? error : new Error(String(error)),
+          firstLoading: false,
         });
       }
     },
@@ -55,6 +60,7 @@ export function useParametredRequest<T, P extends unknown[]>(
       data: null,
       loading: false,
       error: null,
+      firstLoading: false,
     });
   }, []);
 

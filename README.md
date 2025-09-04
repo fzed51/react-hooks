@@ -117,6 +117,7 @@ Les deux hooks exposent :
 
 - `data` : la donnée retournée
 - `loading` : l'état de chargement
+- `firstLoading` : l'état de chargement du la première requête
 - `error` : l'erreur éventuelle
 - `send` : fonction pour déclencher la requête
 - `reset` : fonction pour réinitialiser l'état
