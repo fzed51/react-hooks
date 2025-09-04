@@ -4,7 +4,8 @@ const { createDefaultPreset } = require("ts-jest");
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   preset: "ts-jest",
-  testEnvironment: "node", // Utilise l'environnement Node, ou 'jsdom' pour les tests côté navigateur
+  testEnvironment: "jsdom", // Utilise l'environnement Node, ou 'jsdom' pour les tests côté navigateur
+  testEnvironmentOptions: {},
   moduleFileExtensions: ["ts", "tsx", "js", "json", "node"], // Extensions de fichiers à gérer
   transform: {
     ...createDefaultPreset().transform,

@@ -15,7 +15,8 @@
     "rootDir": "./src",
 
     /* JavaScript Support */
-
+    "jsx": "react-jsx",
+    
     /* Emit */
     "declaration": true,
     "sourceMap": true,
