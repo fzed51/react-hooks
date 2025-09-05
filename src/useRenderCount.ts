@@ -5,12 +5,9 @@ export function useRenderCount(componentName?: string) {
   const mountCount = useRef(0);
   const isFirstRender = useRef(true);
 
-  // Compteur de montage pour détecter StrictMode
   useEffect(() => {
     mountCount.current += 1;
-    return () => {
-      // En StrictMode, ce cleanup s'exécute puis le useEffect se re-exécute
-    };
+    return () => {};
   }, []);
 
   useEffect(() => {
