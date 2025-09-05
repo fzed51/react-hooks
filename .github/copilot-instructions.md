@@ -6,7 +6,7 @@ Suivez ces directives pour être productif et maintenir la cohérence :
 
 ## Architecture du projet
 - Tout le code source se trouve dans le dossier `src/`. Chaque hook est implémenté dans son propre fichier (ex. : `useRequest.ts`, `useParametredRequest.ts`, `useRenderCount.ts`).
-- Si le code d'un hook est trop complexe ou nécessite plusieur fichiers, créez un sous-dossier dans `src/` pour ce hook (ex. : `src/useComplexHook/`).
+- Si le code d'un hook est trop complexe et nécessite plusieur fichiers, créez un sous-dossier dans `src/` pour ce hook (ex. : `src/useComplexHook/`).
 - Chaque hook doit être exporté depuis un fichier `index.ts` dans son dossier.
 
 ## Hooks clés & modèles
