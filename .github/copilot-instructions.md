@@ -56,14 +56,11 @@ Respectez le format suivant pour les messages de commit afin d’assurer la clar
 - Exemple :
   - `feat: add firstLoading state to useRequest and useParametredRequest hooks`
   - `fix: remove unused dependencies from package.json`
-  - `docs: update README with usage examples`
 - Pour les ajouts de fonctionnalités, commencez par `feat:`.
 - Pour les corrections de bugs, commencez par `fix:`.
 - Pour les modifications de documentation, commencez par `docs:`.
 - Pour les tâches de maintenance ou de configuration, utilisez `chore:`.
 - Évitez les messages trop génériques comme `update` ou `changes`.
-
-Ce format facilite la lecture et l’automatisation (ex : génération de changelog).
 
 ---
 
