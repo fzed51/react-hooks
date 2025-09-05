@@ -1,6 +1,6 @@
 {
   "name": "@fzed51/react-hooks",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Bibliothèque de hooks React personnalisés.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -11,6 +11,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/fzed51/react-hooks.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "license": "MIT",
   "devDependencies": {
@@ -28,10 +32,10 @@
     "jest": "30.0.5",
     "jest-junit": "^16.0.0",
     "prettier": "^3.6.2",
+    "react": "^19.0.0",
     "ts-jest": "^29.4.1",
     "typescript": "^5.9.2",
-    "typescript-eslint": "^8.39.0",
-    "react": "^19.0.0"
+    "typescript-eslint": "^8.39.0"
   },
   "peerDependencies": {
     "react": "^19.0.0"
