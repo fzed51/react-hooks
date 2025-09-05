@@ -1,11 +1,6 @@
 import { useState, useCallback } from "react";
-
-export interface UseRequestState<T> {
-  data: T | null;
-  loading: boolean;
-  error: Error | null;
-  firstLoading: boolean;
-}
+import { apiCache } from "./cache";
+import { UseRequestOptions, UseRequestState } from "./types";
 
 export interface UseRequestReturn<T> extends UseRequestState<T> {
   send: () => Promise<void>;
@@ -17,6 +12,7 @@ export interface UseRequestReturn<T> extends UseRequestState<T> {
  */
 export function useRequest<T>(
   requestFn: () => Promise<T>,
+  options: UseRequestOptions = {},
 ): UseRequestReturn<T> {
   const [state, setState] = useState<UseRequestState<T>>({
     data: null,
@@ -34,7 +30,18 @@ export function useRequest<T>(
     }));
 
     try {
-      const result = await requestFn();
+      let result: T;
+      if (options?.cache) {
+        // Utilisation du cache
+        result = await apiCache.request(
+          options.cache.key,
+          requestFn,
+          [],
+          options.cache.ttl,
+        );
+      } else {
+        result = await requestFn();
+      }
       setState({
         data: result,
         loading: false,
@@ -49,7 +56,7 @@ export function useRequest<T>(
         firstLoading: false,
       });
     }
-  }, [requestFn]);
+  }, [requestFn, options]);
 
   const reset = useCallback(() => {
     setState({

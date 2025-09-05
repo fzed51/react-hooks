@@ -1,14 +1,9 @@
 import { useState, useCallback } from "react";
-
-export interface UseParametredRequestState<T> {
-  data: T | null;
-  loading: boolean;
-  error: Error | null;
-  firstLoading: boolean;
-}
+import { UseRequestState, UseRequestOptions } from "./types";
+import { apiCache } from "./cache";
 
 export interface UseParametredRequestReturn<T, P extends unknown[]>
-  extends UseParametredRequestState<T> {
+  extends UseRequestState<T> {
   send: (...params: P) => Promise<void>;
   reset: () => void;
 }
@@ -18,8 +13,9 @@ export interface UseParametredRequestReturn<T, P extends unknown[]>
  */
 export function useParametredRequest<T, P extends unknown[]>(
   requestFn: (...params: P) => Promise<T>,
+  options: UseRequestOptions = {},
 ): UseParametredRequestReturn<T, P> {
-  const [state, setState] = useState<UseParametredRequestState<T>>({
+  const [state, setState] = useState<UseRequestState<T>>({
     data: null,
     loading: false,
     error: null,
@@ -36,7 +32,18 @@ export function useParametredRequest<T, P extends unknown[]>(
       }));
 
       try {
-        const result = await requestFn(...params);
+        let result: T;
+        if (options?.cache) {
+          // Utilisation du cache
+          result = await apiCache.request(
+            options.cache.key,
+            requestFn,
+            params,
+            options.cache.ttl,
+          );
+        } else {
+          result = await requestFn(...params);
+        }
         setState({
           data: result,
           loading: false,
