@@ -102,3 +102,4 @@ coverage/
 .env.*
 !.env.sample
 dist/
+.npmrc 
