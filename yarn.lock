@@ -594,7 +594,7 @@ __metadata:
     jest-junit: "npm:^16.0.0"
     prettier: "npm:^3.6.2"
     react: "npm:^19.0.0"
-    react-dom: "npm:^19.1.1"
+    react-dom: "npm:^19.0.0"
     ts-jest: "npm:^29.4.1"
     typescript: "npm:^5.9.2"
     typescript-eslint: "npm:^8.42.0"
@@ -4251,7 +4251,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19.1.1":
+"react-dom@npm:^19.0.0":
   version: 19.1.1
   resolution: "react-dom@npm:19.1.1"
   dependencies:
